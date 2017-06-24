@@ -1,0 +1,6 @@
+<form action="/guess" method="post" name="guess-form">
+  <div class="form-group">
+    <input type="text" name = "guess" placeholder="Enter your code" pattern="^[1-6]{4}">
+  </div>
+  <input type="submit" value="Try(<%= game.attempts %>)">
+</form>
