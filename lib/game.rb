@@ -1,26 +1,31 @@
 class Game
-  attr_reader :attempts, :attempts_used
-  attr_accessor :input
+  attr_reader :hints, :game_status
+  attr_accessor :input, :attempts
 
   def initialize
     @attempts = 5
-    @attempts_used = 0
     @secret_code = generate_secret_code
+    @hints = 4
   end
 
   def hint
     index = rand(4)
     @secret_code[index]
+    @hints -= 1
   end
 
   def check(input)
     @input = input
     @input = @input.split('').map(&:to_i)
-    return '++++' if @input == @secret_code
+    if @input == @secret_code
+      @game_status = :won
+      return '++++'
+    end
 
     pluses = check_pluses
     minuses = check_minuses(pluses)
-    @attempts_used += 1
+    @attempts -= 1
+    @game_status = :lost if @attempts < 0
     '+' * pluses + '-' * minuses
   end
 
