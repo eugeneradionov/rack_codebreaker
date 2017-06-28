@@ -1,12 +1,9 @@
-<% if game.hints <= 0 %>
-    <p>You have used all your hints :(</p>
-<% else %>
-    <% if hint %>
-        <p>One of the numbers is: <%= hint %></p>
-    <% end %>
+<% unless show_hint.empty? %>
+    <p>Your hints: <%= show_hint %></p>
+<% end %>
 
-    <p>Hints left: <%= game.hints %></p>
+<% unless @game.hints <= 0 %>
     <form action="/hint" method="post">
-      <input type="submit" value="Hint(<%= game.hints %>)">
+      <input type="submit" value="Hint(<%= @game.hints %>)">
     </form>
 <% end %>

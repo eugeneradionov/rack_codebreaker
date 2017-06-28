@@ -8,6 +8,7 @@
 <body>
   <div id="container">
     <h1>Codebreaker</h1>
+
     <% if %w(won lost).include? game_status %>
       <%= render 'end_game.html.erb' %>
     <% else %>
@@ -16,9 +17,8 @@
       <%= render 'restart_form.html.erb' %>
       <%= render 'hints.html.erb' %>
 
-      <p>Status: <%= game_status %></p>
       <p>Result: <%= result %></p>
-      <p>Secret code: <%= game.instance_variable_get(:@secret_code) %></p>
+      <p>Secret code: <%= @game.instance_variable_get(:@secret_code) %></p>
     <% end %>
   </div>
 </body>
