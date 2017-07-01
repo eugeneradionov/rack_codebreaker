@@ -8,6 +8,17 @@
 <body>
   <div id="container">
     <h1>Codebreaker</h1>
+
+    <% if %w(won lost).include? game_status %>
+      <%= render 'end_game.html.erb' %>
+    <% else %>
+      <h3>Guess number</h3>
+      <%= render 'guess_form.html.erb' %>
+      <%= render 'restart_form.html.erb' %>
+      <%= render 'hints.html.erb' %>
+
+      <p>Result: <%= result %></p>
+    <% end %>
   </div>
 </body>
 </html>
